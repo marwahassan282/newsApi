@@ -27,9 +27,9 @@ class ApiManger{
    throw e;
  }
 }
- static Future <NewsResponse> getnews(Sources source) async{
+ static Future <NewsResponse> getnews(Sources source,String search) async{
   var uri=Uri.https(BaseUrl, '/v2/everything',{
-    'apiKey':ApiKey,'sources':source.id,
+    'apiKey':ApiKey,'sources':source.id,'q':search
   });
   var response=await  http.get(uri);
 

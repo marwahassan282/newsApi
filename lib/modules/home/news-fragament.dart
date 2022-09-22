@@ -39,7 +39,6 @@ NewsFragment(this.catagory);
               );
             }
             var listSources=snapShot.data?.sources??[];
-            print('my item is ${listSources[0]}');
             return TabControolerItem(listSources);
           }
 

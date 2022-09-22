@@ -7,7 +7,7 @@ import 'package:newsapi/models/sourseResponse.dart';
 import 'news.dart';
 class SearchPage extends StatelessWidget {
  static var controller=TextEditingController();
-
+static const String routName='search';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +33,16 @@ class SearchPage extends StatelessWidget {
                     border: InputBorder.none),
               ),
             ),
-          )),
+          ),
+      leading: InkWell(
+        onTap: (){
+     Navigator.pop(context);
+        },
+
+          child: Icon(Icons.arrow_back)),),
+
 
     );
   }
+
 }

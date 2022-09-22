@@ -1,0 +1,16 @@
+{
+  "newsTitle": "news Api",
+  "interes": "pick your catagory of interest",
+  "theme": "theming",
+  "catagory": "catagories",
+  "settings": "settings",
+  "english": "english",
+  "arabic": "arabic",
+  "tecnology": "tecnology",
+  "sports": "sports",
+  "business": "اbusiness",
+  "health": "health",
+  "science": "science",
+  "environment": "environment"
+
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapi/modules/home/news-item.dart';
 import 'package:newsapi/modules/home/searchpage.dart';
@@ -8,54 +9,42 @@ import '../../models/newsResponse.dart';
 import '../../models/sourseResponse.dart';
 
 
-class newsScreen extends StatelessWidget {
+class newsScreen extends StatefulWidget {
+
   Sources newsSource;
 
+  static const String routName='news';
 newsScreen(this.newsSource);
+
+  @override
+  State<newsScreen> createState() => _newsScreenState();
+}
+
+class _newsScreenState extends State<newsScreen> {
+
   @override
   Widget build(BuildContext context) {
     var controller=TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text('sports'),
-        actions: [
-         InkWell(
-           onTap: (){
-             Container(
-               width: double.infinity,
-               height: 40,
-               decoration: BoxDecoration(
-                   color: Colors.white, borderRadius: BorderRadius.circular(5)),
-               child: Center(
-                 child: TextField(
-                   controller: controller,
-                   decoration: InputDecoration(
-                       prefixIcon: const Icon(Icons.search),
-                       suffixIcon: IconButton(
-                         icon: const Icon(Icons.clear),
-                         onPressed: () {
-                           /* Clear the search field */
-                         },
-                       ),
-                       hintText: 'Search...',
-                       border: InputBorder.none),
-                 ),
-               ),
-             );
-           },
-           child: Icon(Icons.search,
-              ),
-         ),
+title: Text(widget.newsSource.name!),
 
-        ],
+actions: [
+
+  InkWell(
+    onTap: (){
+      Navigator.pushNamed(context, SearchPage.routName);
+    },
+      child: Icon(Icons.search))
+],
+
 
 
 
 
       ),
       body:  FutureBuilder<NewsResponse>(
-          future: ApiManger.getnews(newsSource,),
+          future: ApiManger.getnews(widget.newsSource,SearchPage.controller.text),
           builder:(c,snapShot){
             if(snapShot.connectionState==ConnectionState.waiting){
               return Center(
